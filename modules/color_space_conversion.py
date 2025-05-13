@@ -62,10 +62,11 @@ class ColorSpaceConversion:
 
         # convert image with its provided bit_depth
         yuv_2d = np.float64(yuv_2d) / (2**8)
-        yuv_2d = np.where(yuv_2d >= 0, np.floor(yuv_2d + 0.5), np.ceil(yuv_2d - 0.5))
 
         yuv_2d[1, :] =  yuv_2d[1, :] * 2.0
         yuv_2d[2, :] =  yuv_2d[2, :] * 2.0
+        
+        yuv_2d = np.where(yuv_2d >= 0, np.floor(yuv_2d + 0.5), np.ceil(yuv_2d - 0.5))
 
         # black-level/DC offset added to YUV values
         yuv_2d[0, :] = 2 ** (self.bit_depth / 2) + yuv_2d[0, :]
