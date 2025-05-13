@@ -63,7 +63,7 @@ class Sharpening:
         """
 
         sigma = self.parm_sha["sharpen_sigma"]
-        kernel_size = 9
+        kernel_size = 21
 
         kernel = self.gaussian_kernel(kernel_size, kernel_size, sigma, sigma)
 
